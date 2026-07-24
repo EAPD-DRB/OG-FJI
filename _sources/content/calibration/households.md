@@ -51,12 +51,6 @@ Statistics labour force survey through a real estimation routine.
 
 ## Remittances
 
-```{warning}
-**Not yet calibrated to Fiji.** The remittance parameters in the packaged file
-are the Philippine values inherited from `OG-PHL`, sourced from the Philippine
-central bank. See `CALIBRATION_STATUS.md`.
-```
-
 Remittances are a large and persistent component of household income in Fiji,
 driven by long-standing outward migration and by seasonal-worker schemes to
 Australia and New Zealand. Leaving this block uncalibrated would produce a

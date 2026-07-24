@@ -1,13 +1,6 @@
 (Chap_GovCalib)=
 # Calibration of Government Parameters
 
-```{warning}
-**Not yet calibrated to Fiji.** The government spending and transfer shares in
-the packaged parameter file are the Philippine values inherited when this
-repository was ported from `OG-PHL`. They must be replaced before any OG-FJI
-result is meaningful. See `CALIBRATION_STATUS.md`.
-```
-
 The three spending shares below are set jointly with the debt anchor and the tax
 system, not independently. Read the fiscal-consistency note in Chapter
 {ref}`Chap_MacroCalib` before setting any of them: if $\alpha_G + \alpha_T$ is

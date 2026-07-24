@@ -426,10 +426,6 @@ for a small economy – in OG-PHL an IMF GFS social-benefit series of zero set
 Pacific island economy, is more exposed to that failure mode than most, so keep
 the live surface minimal and let the JSON hold the documented values.</p>
 <p>Demographics are the exception and stay live (UN WPP) in <code class="docutils literal notranslate"><span class="pre">ogfji.calibrate</span></code>.</p>
-<p>SCAFFOLD STATUS: this repo is a structural port of OG-PHL. The macro values in
-the packaged JSON are still the Philippine ones and are NOT calibrated to Fiji.
-See <code class="docutils literal notranslate"><span class="pre">CALIBRATION_STATUS.md</span></code> at the repository root for the full list of
-values that must be re-derived before any OG-FJI result is meaningful.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ogfji.macro_params.get_macro_params">
 <span class="sig-prename descclassname"><span class="pre">ogfji.macro_params.</span></span><span class="sig-name descname"><span class="pre">get_macro_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">datetime.datetime(1947,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">datetime.datetime(2023,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_iso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FJI'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_from_api</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imf_data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogfji/macro_params.html#get_macro_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogfji.macro_params.get_macro_params" title="Link to this definition">#</a></dt>
@@ -480,8 +476,6 @@ gross debt, less expected inflation)</p>
 </li>
 </ul>
 </div></blockquote>
-<p>NOT YET CALIBRATED: the values currently in the packaged JSON are the
-inherited Philippine ones. See <code class="docutils literal notranslate"><span class="pre">CALIBRATION_STATUS.md</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>macro-parameter overlay (only <code class="docutils literal notranslate"><span class="pre">g_y_annual</span></code> when

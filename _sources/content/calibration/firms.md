@@ -16,12 +16,6 @@ the family-wide default and is not country-specific.
 
 ### Capital's share of output
 
-```{warning}
-**Not yet calibrated to Fiji.** $\gamma$ and $\gamma_g$ in the packaged
-parameter file are the Philippine values inherited from `OG-PHL`. See
-`CALIBRATION_STATUS.md`.
-```
-
 The baseline method is $\gamma = 1 - \text{labor share}$, taking the labor share
 from ILOSTAT or Fiji Bureau of Statistics national accounts, and then carving
 the public capital share $\gamma_g$ out of the *capital* side rather than the

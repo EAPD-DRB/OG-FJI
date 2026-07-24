@@ -496,7 +496,7 @@
     <span class="n">totpers</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
     <span class="n">min_age</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">max_age</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
-    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;608&quot;</span><span class="p">,</span>
+    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;242&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span><span class="p">,</span>
     <span class="n">end_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span><span class="p">,</span>
     <span class="n">graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -539,7 +539,7 @@
     <span class="n">totpers</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
     <span class="n">min_age</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">max_age</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
-    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;608&quot;</span><span class="p">,</span>
+    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;242&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span><span class="p">,</span>
     <span class="n">end_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span><span class="p">,</span>
     <span class="n">graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -589,7 +589,7 @@
     <span class="n">mort_rates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">infmort_rates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">pop_dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;608&quot;</span><span class="p">,</span>
+    <span class="n">country_id</span><span class="o">=</span><span class="s2">&quot;242&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span><span class="p">,</span>
     <span class="n">end_year</span><span class="o">=</span><span class="n">YEAR_TO_PLOT</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span>
     <span class="n">graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -710,22 +710,18 @@ regenerates them, and they should be added once a run produces Fijian versions.
 Do not commit figures inherited from a sibling country.
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>Fiji is not in the offline population-data mirror.</strong> <code class="docutils literal notranslate"><span class="pre">ogcore.demographics</span></code>
-falls back to the <a class="reference external" href="https://github.com/EAPD-DRB/Population-Data">EAPD-DRB/Population-Data</a>
-GitHub mirror when the UN Data Portal API is unreachable or the API token
-fails, but that mirror has no Fiji directory and <code class="docutils literal notranslate"><span class="pre">ogcore</span></code>’s internal country
-lookup has no entry for code 242 — so the fallback raises <code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">'242'</span></code>
-rather than serving data.</p>
-<p>This does <strong>not</strong> block normal use: the packaged
-<code class="docutils literal notranslate"><span class="pre">ogfji_default_parameters.json</span></code> already contains the solved Fijian demographic
-arrays, and the default <code class="docutils literal notranslate"><span class="pre">Calibration(p,</span> <span class="pre">update_from_api=False)</span></code> reads them
-without any network call. It only bites when refreshing demographics from live
-UN data, which needs a working UN Data Portal API token.</p>
-<p>To close the gap permanently, add a Fiji directory to <code class="docutils literal notranslate"><span class="pre">EAPD-DRB/Population-Data</span></code>
-and open a pull request against <code class="docutils literal notranslate"><span class="pre">PSLmodels/OG-Core</span></code> adding <code class="docutils literal notranslate"><span class="pre">&quot;242&quot;:</span> <span class="pre">&quot;FJI&quot;</span></code> to the
-country lookup in <code class="docutils literal notranslate"><span class="pre">ogcore/demographics.py</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">ogcore.demographics</span></code> falls back to the
+<a class="reference external" href="https://github.com/EAPD-DRB/Population-Data">EAPD-DRB/Population-Data</a> mirror
+when the UN Data Portal API is unreachable, but that mirror has no Fiji
+directory and <code class="docutils literal notranslate"><span class="pre">ogcore</span></code>’s country lookup has no entry for code 242, so the
+fallback raises <code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">'242'</span></code>. Refreshing demographics from live UN data
+therefore needs a working UN Data Portal API token. Normal use is unaffected –
+the packaged parameter file already holds the solved demographic arrays and the
+default <code class="docutils literal notranslate"><span class="pre">Calibration(p,</span> <span class="pre">update_from_api=False)</span></code> makes no network call.</p>
+<p>Closing the gap needs a Fiji directory in Population-Data and a pull request
+against <code class="docutils literal notranslate"><span class="pre">PSLmodels/OG-Core</span></code> adding <code class="docutils literal notranslate"><span class="pre">&quot;242&quot;:</span> <span class="pre">&quot;FJI&quot;</span></code> to the country lookup.</p>
 </div>
 </section>
 <section id="footnotes">

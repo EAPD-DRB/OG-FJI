@@ -67,7 +67,7 @@ We discuss the approach to estimating fertility rates $f_{s,t}$, mortality rates
       totpers=100,
       min_age=0,
       max_age=99,
-      country_id="608",
+      country_id="242",
       start_year=YEAR_TO_PLOT,
       end_year=YEAR_TO_PLOT,
       graph=True,
@@ -108,7 +108,7 @@ We discuss the approach to estimating fertility rates $f_{s,t}$, mortality rates
       totpers=100,
       min_age=0,
       max_age=99,
-      country_id="608",
+      country_id="242",
       start_year=YEAR_TO_PLOT,
       end_year=YEAR_TO_PLOT,
       graph=True,
@@ -156,7 +156,7 @@ We discuss the approach to estimating fertility rates $f_{s,t}$, mortality rates
       mort_rates=None,
       infmort_rates=None,
       pop_dist=None,
-      country_id="608",
+      country_id="242",
       start_year=YEAR_TO_PLOT,
       end_year=YEAR_TO_PLOT + 50,
       graph=True,
@@ -301,23 +301,18 @@ regenerates them, and they should be added once a run produces Fijian versions.
 Do not commit figures inherited from a sibling country.
 ```
 
-```{warning}
-**Fiji is not in the offline population-data mirror.** `ogcore.demographics`
-falls back to the [EAPD-DRB/Population-Data](https://github.com/EAPD-DRB/Population-Data)
-GitHub mirror when the UN Data Portal API is unreachable or the API token
-fails, but that mirror has no Fiji directory and `ogcore`'s internal country
-lookup has no entry for code 242 — so the fallback raises `KeyError: '242'`
-rather than serving data.
+```{note}
+`ogcore.demographics` falls back to the
+[EAPD-DRB/Population-Data](https://github.com/EAPD-DRB/Population-Data) mirror
+when the UN Data Portal API is unreachable, but that mirror has no Fiji
+directory and `ogcore`'s country lookup has no entry for code 242, so the
+fallback raises `KeyError: '242'`. Refreshing demographics from live UN data
+therefore needs a working UN Data Portal API token. Normal use is unaffected --
+the packaged parameter file already holds the solved demographic arrays and the
+default `Calibration(p, update_from_api=False)` makes no network call.
 
-This does **not** block normal use: the packaged
-`ogfji_default_parameters.json` already contains the solved Fijian demographic
-arrays, and the default `Calibration(p, update_from_api=False)` reads them
-without any network call. It only bites when refreshing demographics from live
-UN data, which needs a working UN Data Portal API token.
-
-To close the gap permanently, add a Fiji directory to `EAPD-DRB/Population-Data`
-and open a pull request against `PSLmodels/OG-Core` adding `"242": "FJI"` to the
-country lookup in `ogcore/demographics.py`.
+Closing the gap needs a Fiji directory in Population-Data and a pull request
+against `PSLmodels/OG-Core` adding `"242": "FJI"` to the country lookup.
 ```
 
 ## Footnotes

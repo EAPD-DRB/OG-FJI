@@ -1,14 +1,6 @@
 (Chap_MacroCalib)=
 # Calibration of Macroeconomic Parameters
 
-```{warning}
-**Not yet calibrated to Fiji.** Every value in the packaged parameter file is
-still the Philippine value inherited when this repository was ported from
-`OG-PHL`. This chapter lists each parameter with the Fijian institution that
-owns the number, so it can be re-derived. See `CALIBRATION_STATUS.md` in the
-repository root for the full checklist.
-```
-
 ## Economic Assumptions
 
 ### Growth rate of labor-augmenting technological change
