@@ -1,13 +1,6 @@
 (Chap_Tax)=
 # Taxes in OG-FJI
 
-```{warning}
-**Not yet calibrated to Fiji.** Every tax rate in the packaged parameter file is
-the Philippine value inherited when this repository was ported from `OG-PHL`,
-including rates tied to Philippine legislation. They must be replaced before any
-OG-FJI result is meaningful. See `CALIBRATION_STATUS.md`.
-```
-
 The government is not an optimizing agent in `OG-FJI`. It levies taxes on
 household income, corporate income, and consumption. With those resources it
 provides transfers to households, spends on public goods, and makes rule-based

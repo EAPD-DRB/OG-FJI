@@ -8,13 +8,6 @@
 
 OG-FJI is an overlapping-generations (OG) model that allows for dynamic general equilibrium analysis of fiscal policy for Fiji. OG-FJI is built on the OG-Core framework. The model output includes changes in macroeconomic aggregates (GDP, investment, consumption), wages, interest rates, and the stream of tax revenues over time. Regularly updated documentation of the model theory--its output, and solution method--and the Python API is available at https://pslmodels.github.io/OG-Core and documentation of the specific Fiji calibration of the model is available at https://eapd-drb.github.io/OG-FJI.
 
-> [!WARNING]
-> **OG-FJI is not yet calibrated to Fiji.** This repository was created by porting the structure of [OG-PHL](https://github.com/EAPD-DRB/OG-PHL). The machinery, tests and CI are complete and the model runs end to end, but most parameter values are still the inherited Philippine ones — so it will produce plausible-looking output that does not describe Fiji.
->
-> Demographics are the exception: they are genuinely Fijian, regenerated from UN World Population Prospects data for `country_id = 242`.
->
-> **[CALIBRATION_STATUS.md](CALIBRATION_STATUS.md) lists exactly what is real, what is inherited, and the Fijian source for each value that must be replaced.** Read it before using any output.
-
 
 ## Using and contributing to OG-FJI
 

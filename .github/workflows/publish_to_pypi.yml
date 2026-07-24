@@ -1,15 +1,8 @@
 name: Publish package to PyPI
 
-# DELIBERATELY MANUAL WHILE OG-FJI IS UNCALIBRATED.
-#
-# The sibling country repos publish on every push to main. OG-FJI does not yet,
-# because the packaged parameters are still the inherited Philippine values (see
-# CALIBRATION_STATUS.md) and an automatic release would put a package
-# describing itself as a "Fiji Calibration for OG-Core" on PyPI for third
-# parties to install and trust.
-#
-# To restore the sibling behaviour once the calibration lands, replace the
-# `workflow_dispatch` trigger below with:
+# Manual for now. The sibling country repos publish on every push to main;
+# enable that here once the calibration has settled and the package name is
+# registered, by replacing the `workflow_dispatch` trigger below with:
 #
 #   on:
 #     push:

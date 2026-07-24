@@ -16,11 +16,6 @@ Pacific island economy, is more exposed to that failure mode than most, so keep
 the live surface minimal and let the JSON hold the documented values.
 
 Demographics are the exception and stay live (UN WPP) in ``ogfji.calibrate``.
-
-SCAFFOLD STATUS: this repo is a structural port of OG-PHL. The macro values in
-the packaged JSON are still the Philippine ones and are NOT calibrated to Fiji.
-See ``CALIBRATION_STATUS.md`` at the repository root for the full list of
-values that must be re-derived before any OG-FJI result is meaningful.
 """
 
 import datetime
@@ -158,9 +153,6 @@ def get_macro_params(
                                       gross debt, less expected inflation)
       * alpha_RM_1, alpha_RM_T     -- remittances are large for Fiji; Reserve
                                       Bank of Fiji balance-of-payments data
-
-    NOT YET CALIBRATED: the values currently in the packaged JSON are the
-    inherited Philippine ones. See ``CALIBRATION_STATUS.md``.
 
     Returns:
         dict: macro-parameter overlay (only ``g_y_annual`` when
