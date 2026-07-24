@@ -1,0 +1,43 @@
+name: Publish package to PyPI
+
+# DELIBERATELY MANUAL WHILE OG-FJI IS UNCALIBRATED.
+#
+# The sibling country repos publish on every push to main. OG-FJI does not yet,
+# because the packaged parameters are still the inherited Philippine values (see
+# CALIBRATION_STATUS.md) and an automatic release would put a package
+# describing itself as a "Fiji Calibration for OG-Core" on PyPI for third
+# parties to install and trust.
+#
+# To restore the sibling behaviour once the calibration lands, replace the
+# `workflow_dispatch` trigger below with:
+#
+#   on:
+#     push:
+#       branches:
+#         - main
+#
+# Publishing also needs a `PYPI` repository secret and the `ogfji` name
+# registered on PyPI.
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Publish to PyPI
+    if: github.repository == 'EAPD-DRB/OG-FJI'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.13"
+      - name: Build package
+        run: uv build
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI }}
+          skip_existing: true

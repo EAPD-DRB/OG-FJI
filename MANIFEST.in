@@ -1,0 +1,5 @@
+include ogfji/ogfji_default_parameters.json
+# No SAM ships with OG-FJI yet -- the model runs single-industry (M=1, I=1).
+# When a Fiji SAM is sourced and placed in ogfji/data/, add it here as well as
+# in [tool.setuptools.package-data] in pyproject.toml, and make sure the
+# filename matches SAM_FILENAME in ogfji/input_output.py exactly.

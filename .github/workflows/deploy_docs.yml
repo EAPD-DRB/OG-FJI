@@ -1,0 +1,41 @@
+name: Build and Deploy Jupyter Book documentation
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+      - './docs/**.py'
+      - './docs/**.png'
+      - './docs/book/**.yml'
+      - './docs/book/**.bib'
+      - './docs/book/content/calibration/images/**.png'
+      - './docs/book/content/api/**.rst'
+      - './ogfji/**.py'
+jobs:
+  build-and-deploy:
+    if: github.repository == 'EAPD-DRB/OG-FJI'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install package and dependencies
+        run: uv sync --extra dev --extra docs
+
+      - name: Build # Build Jupyter Book
+        run: uv run make documentation
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: docs/book/_build/html # The folder the action should deploy.
