@@ -9,6 +9,7 @@ parts:
   - file: content/api/public_api
 - caption: Calibration
   chapters:
+  - file: content/calibration/overview
   - file: content/calibration/households
   - file: content/calibration/firms
   - file: content/calibration/macro

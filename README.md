@@ -93,7 +93,14 @@ uv run python examples/run_og_fji.py
 
 #### What happens
 
-The first `uv run` creates the project environment if it does not exist yet — downloading a compatible Python interpreter if needed and installing the exact locked dependencies — and then runs the example. Early in the run you may be asked for a UN API token; just press return, and the model reads the same population data from a public mirror and continues. A full baseline-plus-reform run takes from 35 minutes to more than two hours; when it finishes, its plots and tables are saved under `./examples/OG-FJI-Example/` (see the list of outputs below).
+The first `uv run` creates the project environment if it does not exist yet —
+downloading a compatible Python interpreter if needed and installing the exact
+locked dependencies — and then runs the example. The packaged Fiji calibration
+is self-contained and makes no live data calls. A full baseline-plus-reform run
+takes from 35 minutes to more than two hours; when it finishes, its plots and
+tables are saved under `./examples/OG-FJI-Example/` (see the list of outputs
+below). A live UN demographic refresh is optional and requires working access
+to the UN data service.
 
 ### Installing for development or contributing
 
@@ -131,12 +138,18 @@ Once the package is installed, one can adjust parameters in the OG-Core `Specifi
 ```
 from ogcore.parameters import Specifications
 from ogfji.calibrate import Calibration
-from ogfji.utils import is_connected
+import importlib.resources
+import json
+
 p = Specifications()
-if is_connected():
-    c = Calibration(p, update_from_api=True)
-    updated_params = c.get_dict()
-    p.update_specifications(updated_params)
+defaults_path = importlib.resources.files("ogfji").joinpath(
+    "ogfji_default_parameters.json"
+)
+p.update_specifications(json.loads(defaults_path.read_text()))
+
+# Optional: refresh only UN demographics and the dependent earnings matrix.
+c = Calibration(p, update_from_api=True)
+p.update_specifications(c.get_dict())
 ```
 
 ## Disclaimer

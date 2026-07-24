@@ -10,22 +10,7 @@ import urllib.request
 
 CUR_PATH = os.path.abspath(os.path.dirname(__file__))
 OUTPUT_DIR = os.path.join(CUR_PATH, "OUTPUT", "ability")
-
-# Gini the earnings tilt is solved to match.
-#
-# 30.7 is Fiji's most recent World Bank estimate (2019, SI.POV.GINI), built
-# from the Household Income and Expenditure Survey.
-#
-# CONCEPT MISMATCH -- READ BEFORE TRUSTING THIS NUMBER. The tilt is solved
-# against a US anchor of gini_usa_data = 41.5, which is the World Bank's
-# INCOME-concept Gini for the United States. Fiji's 30.7 is a CONSUMPTION-
-# concept Gini, and consumption Ginis run materially below income Ginis for
-# the same economy. Matching one against the other understates Fijian
-# inequality and flattens the calibrated e matrix. Before this is used for
-# published results, replace it with an income-concept Gini for Fiji (WID, or
-# an income-based tabulation from the Fiji Bureau of Statistics HIES) so both
-# sides of the ratio are the same welfare concept.
-GINI_TO_MATCH = 30.7
+GINI_TO_MATCH = 36.7
 
 
 def get_e_interp(
@@ -54,12 +39,9 @@ def get_e_interp(
             ability group, length J
         age_wgts (Numpy array): distribution of population in each age
             group, length S
-        gini_to_match (float): Gini coefficient to match. Defaults to
-            ``GINI_TO_MATCH`` (30.7, Fiji 2019, World Bank SI.POV.GINI).
-            See the note on ``GINI_TO_MATCH`` above: that figure is a
-            consumption-concept Gini and the US anchor it is compared
-            against is income-concept.
-            https://data.worldbank.org/indicator/SI.POV.GINI
+        gini_to_match (float): Gini coefficient to match, default is
+            36.7, Fiji's income Gini from the 2013-14 HIES, reported in
+            Fiji's 2019 Voluntary National Review
         plot (bool): if True, creates plots of emat_orig and the new
             interpolated emat_new
 
@@ -155,7 +137,7 @@ def get_e_interp(
     ):
         pass  # will return the e_new_scaled found above since dims the same
     else:
-        # generate vector of mid points for the Filipino ability groups
+        # generate vector of mid points for the Fijian ability groups
         abil_midp = np.zeros(J)
         pct_lb = 0.0
         for j in range(J):

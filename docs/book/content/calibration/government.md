@@ -1,53 +1,23 @@
-(Chap_GovCalib)=
-# Calibration of Government Parameters
+# Government, debt, and spending
 
-The three spending shares below are set jointly with the debt anchor and the tax
-system, not independently. Read the fiscal-consistency note in Chapter
-{ref}`Chap_MacroCalib` before setting any of them: if $\alpha_G + \alpha_T$ is
-inconsistent with the revenue the tax system raises and the primary balance that
-`debt_ratio_ss` requires, the steady state will still solve and look fine while
-the transition path diverges.
+The initial central-government debt ratio is 82.1% of GDP at end-July 2026.
+External debt is 34.7% of the stock, so both
+`initial_foreign_debt_ratio` and `zeta_D` are 0.347. The steady-state
+`debt_ratio_ss=0.80` is a policy anchor, not a claim that current debt already
+equals the target. The 80% target is described in the fiscal-strategy
+discussion in the [IMF 2026 Article IV report](https://www.imf.org/-/media/files/publications/cr/2026/english/1fjiea2026001.pdf).
 
-## Government Transfers as a Share of GDP
+The long-run spending closure uses the IMF FY2030–31 projection:
 
-$\alpha_T$ is spending on transfer programs as a share of GDP, excluding
-pensions, which OG-Core models separately. Take it from the functional
-classification of the budget rather than as a residual.
+- tax revenue: 24.5% of GDP;
+- foreign grants: 0.5%;
+- primary expenditure: 26.0%;
+- transfers: 7.5%.
 
-*Sources to use:* Fiji Ministry of Finance budget estimates and the annual
-Economic and Fiscal Update; the Fiji National Provident Fund for the boundary
-between pensions and other social spending; World Bank World Development
-Indicators as a cross-check only.
+Therefore `alpha_T=0.075` and `alpha_G=0.185`. Because the public-capital
+block is off, `alpha_G` includes both current non-transfer purchases and
+capital expenditure. This produces the -1% primary balance consistent with a
+stable high-debt economy when the real debt cost remains below real growth.
 
-## Government Spending as a Share of GDP
-
-$\alpha_G$ is government spending on goods and services as a share of GDP:
-
-$$\text{Government spending} = \text{Total outlays} - \text{Transfers} - \text{Net interest on debt} - \text{Pensions}$$
-
-OG-Core accepts a vector, so a short forecast path — for example the budget's
-own forward estimates — can be supplied rather than a single value. Whatever is
-used, subtract the calibrated $\alpha_T$ so the two do not double count.
-
-*Sources to use:* Fiji Ministry of Finance budget estimates and forward
-estimates; IMF Article IV for the medium-term fiscal path.
-
-## Government spending on infrastructure as a share of GDP
-
-$\alpha_I$ is public infrastructure investment as a share of GDP. It drives the
-public capital stock, which enters production through $\gamma_g$.
-
-```{note}
-If $\gamma_g > 0$, set `initial_Kg_ratio` deliberately rather than inheriting
-it. Solve the model's own steady-state law of motion
-
-$$\bar{K}_g/\bar{Y} = \frac{(1-\varphi_g)\,\alpha_I}{e^{g_y}(1+g_n) - (1-\delta_g)}$$
-
-and if the measured public capital stock is far above that sustainable level,
-start at the measured value and let it depreciate toward the steady state. Fiji
-carries substantial donor- and climate-resilience-financed infrastructure, so
-the measured stock may sit above the level its own investment rate sustains.
-```
-
-*Sources to use:* Fiji Ministry of Finance capital budget; Asian Development
-Bank and World Bank country infrastructure diagnostics.
+The transition path must still be checked against the full government budget
+identity before policy use.
