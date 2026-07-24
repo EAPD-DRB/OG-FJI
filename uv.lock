@@ -1659,7 +1659,7 @@ wheels = [
 
 [[package]]
 name = "ogcore"
-version = "0.16.3"
+version = "0.18.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "dask" },
@@ -1673,9 +1673,9 @@ dependencies = [
     { name = "requests" },
     { name = "scipy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/da/ad/3eb6bfb4e84e2a081c29aa4050989eb8a53ce237d9b3448c62196ce1dea3/ogcore-0.16.3.tar.gz", hash = "sha256:a06363fea42a6994a88e39046bcc9bfbaeb342ff23d67ca2409bc2cef575b7e8", size = 505280, upload-time = "2026-06-26T17:26:11.257Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/04/f8/3d3547c6964f7503304bb1d595a1ef1f53f8b3472eb79f87fa9a18c8eddb/ogcore-0.18.1.tar.gz", hash = "sha256:361d0081cfa9a8d9e603748bb3b23853f060e27ff7c967549761593f35b83fc5", size = 1052991, upload-time = "2026-07-24T15:11:27.619Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/56/a5/47b9755e0a541be15e96ce926f635f21e3f2a4ea627234cf989d723499f2/ogcore-0.16.3-py3-none-any.whl", hash = "sha256:fa96021b121b206e1a1036e5f8f7e35bf143555bb63590f5f5ee98e111b60148", size = 442221, upload-time = "2026-06-26T17:26:09.841Z" },
+    { url = "https://files.pythonhosted.org/packages/d4/57/0f21f489b41ef31863d3f5959c00cbe3b3355204891e66ae639beb81a76c/ogcore-0.18.1-py3-none-any.whl", hash = "sha256:2ff8a2b8204b8880538879d5a6c13906b395478d7a67c69b07173ad7b89967c8", size = 1119849, upload-time = "2026-07-24T15:11:26.356Z" },
 ]
 
 [[package]]
@@ -1734,7 +1734,7 @@ requires-dist = [
     { name = "linecheck" },
     { name = "matplotlib" },
     { name = "numpy" },
-    { name = "ogcore", specifier = ">=0.16.3" },
+    { name = "ogcore", specifier = ">=0.18.1" },
     { name = "openpyxl", specifier = ">=3.1.2" },
     { name = "pandas", specifier = ">=1.2.5" },
     { name = "paramtools", specifier = ">=0.20.0" },
