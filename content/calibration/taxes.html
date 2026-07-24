@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Taxes in OG-FJI &#8212; OG-FJI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/calibration/taxes';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Universal Basic Income (UBI)" href="UBI.html" />
+    <link rel="prev" title="Calibration of Government Parameters" href="government.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OG-FJI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    OG-FJI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to OG-FJI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing/contributor_guide.html">Contributor Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-FJI API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/public_api.html">API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/calibrate.html">Main Calibration Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/income.html">Life-cycle productivity profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/input_output.html">Output-Consumption Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/macro_params.html">Macro Parameter Estimation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/utils.html">Calibration Utilities</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Calibration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="households.html">Calibration of Household Preference Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firms.html">Calibration of Firms Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macro.html">Calibration of Macroeconomic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demographics.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="earnings.html">Lifetime Earnings Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="government.html">Calibration of Government Parameters</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Taxes in OG-FJI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UBI.html">Universal Basic Income (UBI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matching_lwi.html">Matching Labor, Wealth, and Income Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exogenous_parameters.html">Exogenous Parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../OGFJI_references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Citations of OG-FJI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations and use cases of OG-FJI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EAPD-DRB/OG-FJI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EAPD-DRB/OG-FJI/issues/new?title=Issue%20on%20page%20%2Fcontent/calibration/taxes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/calibration/taxes.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Taxes in OG-FJI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-governing-principle-effective-not-statutory-rates">The governing principle: effective, not statutory, rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-income-taxes">Personal income taxes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-functional-form">Choosing the functional form</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bequest-and-wealth-taxes">Bequest and wealth taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corporate-income-taxes">Corporate income taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumption-and-indirect-taxes">Consumption and indirect taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informality">Informality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="taxes-in-og-fji">
+<span id="chap-tax"></span><h1>Taxes in OG-FJI<a class="headerlink" href="#taxes-in-og-fji" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Not yet calibrated to Fiji.</strong> Every tax rate in the packaged parameter file is
+the Philippine value inherited when this repository was ported from <code class="docutils literal notranslate"><span class="pre">OG-PHL</span></code>,
+including rates tied to Philippine legislation. They must be replaced before any
+OG-FJI result is meaningful. See <code class="docutils literal notranslate"><span class="pre">CALIBRATION_STATUS.md</span></code>.</p>
+</div>
+<p>The government is not an optimizing agent in <code class="docutils literal notranslate"><span class="pre">OG-FJI</span></code>. It levies taxes on
+household income, corporate income, and consumption. With those resources it
+provides transfers to households, spends on public goods, and makes rule-based
+adjustments to stabilize the economy in the long run. It can run deficits or
+surpluses in a given year and so must be able to accumulate debt or savings. The
+spending and debt parameters are discussed in Chapter <a class="reference internal" href="macro.html#chap-macrocalib"><span class="std std-ref">Calibration of Macroeconomic Parameters</span></a>;
+taxes are discussed here.</p>
+<section id="the-governing-principle-effective-not-statutory-rates">
+<h2>The governing principle: effective, not statutory, rates<a class="headerlink" href="#the-governing-principle-effective-not-statutory-rates" title="Link to this heading">#</a></h2>
+<p>Every rate below should be calibrated as <strong>actual collections divided by the
+model-wide base</strong>, not as the statutory rate. This matters for Fiji, where a
+substantial share of activity is subsistence, informal, or otherwise outside the
+tax net, so effective rates sit well below statutory ones.</p>
+<p>Apply the principle <em>consistently across every instrument</em>. A common and costly
+inconsistency in the country models is discounting personal income tax for
+informality while leaving payroll or corporate tax at the full statutory rate.</p>
+</section>
+<section id="personal-income-taxes">
+<h2>Personal income taxes<a class="headerlink" href="#personal-income-taxes" title="Link to this heading">#</a></h2>
+<p>The government sector influences households through government transfers <span class="math notranslate nohighlight">\(TR_t\)</span>
+and through the total tax liability function <span class="math notranslate nohighlight">\(T_{s,t}\)</span>, which decomposes into
+the effective tax rate times total income as shown in the OG-Core
+documentation.<a class="footnote-reference brackets" href="#taxeq" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight" id="equation-eqhhbc">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eqhhbc" title="Link to this equation">#</a></span>\[\begin{split}  c_{j,s,t} + b_{j,s+1,t+1} &amp;= (1 + r_{hh,t})b_{j,s,t} + w_t e_{j,s} n_{j,s,t} + \\
+  &amp;\quad\quad\zeta_{j,s}\frac{BQ_t}{\lambda_j\omega_{s,t}} + \eta_{j,s,t}\frac{TR_{t}}{\lambda_j\omega_{s,t}} + ubi_{j,s,t} - T_{s,t}  \\
+  &amp;\quad\forall j,t\quad\text{and}\quad s\geq E+1 \quad\text{where}\quad b_{j,E+1,t}=0\quad\forall j,t\end{split}\]</div>
+<section id="choosing-the-functional-form">
+<h3>Choosing the functional form<a class="headerlink" href="#choosing-the-functional-form" title="Link to this heading">#</a></h3>
+<p>Three options, in increasing fidelity:</p>
+<ol class="arabic simple">
+<li><p><strong>Flat <code class="docutils literal notranslate"><span class="pre">linear</span></code></strong> — a single effective and marginal rate. Cheapest, no
+progressivity. Acceptable as a first pass, but see the warning below.</p></li>
+<li><p><strong>Progressive parametric form fit to the statutory schedule</strong> — genuine
+progressivity with <em>no microdata</em>. It needs only Fiji’s statutory PIT
+schedule plus a collections target, so it is available now and is strongly
+preferred over flat-linear.</p></li>
+<li><p><strong>Microdata-estimated nonlinear</strong> — requires filer microdata and a
+Tax-Calculator equivalent. Not currently feasible for Fiji.</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Prefer <strong>GS (Gouveia-Strauss)</strong> over HSV. Set <code class="docutils literal notranslate"><span class="pre">tax_func_type</span> <span class="pre">=</span> <span class="pre">&quot;GS&quot;</span></code>, with
+parameters <span class="math notranslate nohighlight">\((\phi_0, \phi_1, \phi_2)\)</span> and tax
+<span class="math notranslate nohighlight">\(T(y) = \phi_0\,(y - (y^{-\phi_1} + \phi_2)^{-1/\phi_1})\)</span> on total income.
+Calibrate it as: <span class="math notranslate nohighlight">\(\phi_0\)</span> = the statutory top marginal rate (an anchor, not a
+fit); <span class="math notranslate nohighlight">\(\phi_1\)</span> fit to the schedule’s curvature; <span class="math notranslate nohighlight">\(\phi_2\)</span> tuned in-model to the
+PIT-to-GDP collections target, which is where the effective-rate and
+informality wedge enters.</p>
+<p>GS floors the effective rate at exactly zero, which is faithful wherever a
+statutory threshold exempts the bottom of the distribution. HSV’s effective rate
+goes <em>negative</em> below the threshold, and that implicit bottom-end subsidy is not
+cosmetic — in a sibling country model it drained transition revenue and helped
+push the transition into a debt runaway where GS with the same targets
+converged.</p>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">etr_params</span></code>, <code class="docutils literal notranslate"><span class="pre">mtrx_params</span></code> and <code class="docutils literal notranslate"><span class="pre">mtry_params</span></code> vary by period and age
+only, never by lifetime-income group <span class="math notranslate nohighlight">\(j\)</span>; group heterogeneity enters through
+each household’s income arguments. <code class="docutils literal notranslate"><span class="pre">mtrx_params</span></code> is the marginal rate on
+<strong>labor</strong> income and <code class="docutils literal notranslate"><span class="pre">mtry_params</span></code> the marginal rate on <strong>capital</strong> income — the
+<code class="docutils literal notranslate"><span class="pre">x</span></code>/<code class="docutils literal notranslate"><span class="pre">y</span></code> naming is not mnemonic and is easy to get backwards.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mean_income_data</span></code>, used in tax function estimation, must be set to mean
+household income in Fiji dollars.</p>
+<p><em>Sources to use:</em> Fiji Revenue and Customs Service (FRCS) statutory schedules
+and annual collections; Fiji Ministry of Finance revenue tables; Fiji Bureau of
+Statistics Household Income and Expenditure Survey for mean income.</p>
+</section>
+</section>
+<section id="bequest-and-wealth-taxes">
+<h2>Bequest and wealth taxes<a class="headerlink" href="#bequest-and-wealth-taxes" title="Link to this heading">#</a></h2>
+<p>Wealth taxes are set to zero by default. Set <span class="math notranslate nohighlight">\(\tau_{bq}\)</span> to Fiji’s actual estate
+or inheritance tax treatment.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Check this value explicitly rather than inheriting it. A stray nonzero bequest
+tax left over from a sibling repo silently collected several percent of GDP in
+one country model while the documentation stated bequest tax was zero — and that
+phantom revenue masked a spending-exceeds-revenue gap until someone fixed the
+tax. Grep the packaged JSON for every nonzero tax the documentation claims is
+off.</p>
+</div>
+</section>
+<section id="corporate-income-taxes">
+<h2>Corporate income taxes<a class="headerlink" href="#corporate-income-taxes" title="Link to this heading">#</a></h2>
+<p>Set <code class="docutils literal notranslate"><span class="pre">cit_rate</span></code> from Fiji’s statutory corporate rate, then adjust toward the
+effective rate actually collected using <code class="docutils literal notranslate"><span class="pre">adjustment_factor_for_cit_receipts</span></code> and
+<code class="docutils literal notranslate"><span class="pre">c_corp_share_of_assets</span></code>. Fiji operates tax incentives and concessionary regimes
+in several sectors, so the collected rate will diverge from the headline rate.</p>
+<p><em>Sources to use:</em> FRCS collections by instrument; Ministry of Finance revenue
+tables; the IMF Article IV tax-expenditure discussion.</p>
+</section>
+<section id="consumption-and-indirect-taxes">
+<h2>Consumption and indirect taxes<a class="headerlink" href="#consumption-and-indirect-taxes" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tau_c</span></code> should capture <strong>all</strong> consumption and indirect taxes, not VAT alone —
+in Fiji that means VAT together with the Service Turnover Tax, Environment and
+Climate Adaptation Levy, departure tax, excises and customs duties, to the
+extent they fall on household consumption. Calibrate as total indirect
+collections divided by the consumption base.</p>
+</section>
+<section id="informality">
+<h2>Informality<a class="headerlink" href="#informality" title="Link to this heading">#</a></h2>
+<p>Choose the rung the data supports:</p>
+<ol class="arabic simple">
+<li><p><em>Narrative only</em> — name informality as the reason effective rates sit below
+statutory ones, pick a stylized effective rate, and flag it as provisional.</p></li>
+<li><p><em>Structural two-sector</em> — use OG-Core’s multi-industry machinery with an
+informal industry carrying <code class="docutils literal notranslate"><span class="pre">cit_rate</span> <span class="pre">=</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">tau_c</span> <span class="pre">=</span> <span class="pre">0</span></code>. Requires a SAM,
+which Fiji does not yet have here.</p></li>
+<li><p><em>Household graded non-compliance</em> — set
+<code class="docutils literal notranslate"><span class="pre">labor_income_tax_noncompliance_rate</span></code> and <code class="docutils literal notranslate"><span class="pre">capital_income_tax_noncompliance_rate</span></code>
+by lifetime-income group, with the compliant-group effective rate solved from
+a revenue identity. Keep labor and capital non-compliance equal: OG-Core’s
+steady-state diagnostic tiles the capital array from the labor one, and a
+mismatch produces a misleading diagnostic.</p></li>
+</ol>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>OG-Core’s transition path applies year-0 compliance and filer values to the
+whole path’s revenue accounting. A <em>time-varying</em> compliance reform therefore
+yields inconsistent transition revenue — behavior responds while revenue does
+not. Steady states are fine. A formalization reform needs the upstream fix
+first; the symptom is reform revenue tracking the baseline exactly while labor
+supply moves.</p>
+</div>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="taxeq" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>See the online OG-Core documentation, Chapter <a class="reference external" href="https://pslmodels.github.io/OG-Core/content/theory/government.html">“Government”</a>, Section <a class="reference external" href="https://pslmodels.github.io/OG-Core/content/theory/government.html#effective-and-marginal-tax-rates">“Effective and Marginal Tax Rates”</a>, equation <a class="reference external" href="https://pslmodels.github.io/OG-Core/content/theory/government.html#equation-eqtaxcalcliabetr2">(57)</a>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/calibration"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="government.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calibration of Government Parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="UBI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Universal Basic Income (UBI)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-governing-principle-effective-not-statutory-rates">The governing principle: effective, not statutory, rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-income-taxes">Personal income taxes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-functional-form">Choosing the functional form</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bequest-and-wealth-taxes">Bequest and wealth taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corporate-income-taxes">Corporate income taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumption-and-indirect-taxes">Consumption and indirect taxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informality">Informality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcelo LaFleur, Richard W. Evans, and Jason DeBacker
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

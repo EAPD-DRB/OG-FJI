@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calibration of Macroeconomic Parameters &#8212; OG-FJI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/calibration/macro';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Demographics" href="demographics.html" />
+    <link rel="prev" title="Calibration of Firms Parameters" href="firms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OG-FJI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    OG-FJI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to OG-FJI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing/contributor_guide.html">Contributor Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-FJI API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/public_api.html">API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/calibrate.html">Main Calibration Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/income.html">Life-cycle productivity profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/input_output.html">Output-Consumption Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/macro_params.html">Macro Parameter Estimation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/utils.html">Calibration Utilities</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Calibration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="households.html">Calibration of Household Preference Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firms.html">Calibration of Firms Parameters</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Calibration of Macroeconomic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demographics.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="earnings.html">Lifetime Earnings Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="government.html">Calibration of Government Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxes.html">Taxes in OG-FJI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UBI.html">Universal Basic Income (UBI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matching_lwi.html">Matching Labor, Wealth, and Income Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exogenous_parameters.html">Exogenous Parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../OGFJI_references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Citations of OG-FJI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations and use cases of OG-FJI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/EAPD-DRB/OG-FJI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/EAPD-DRB/OG-FJI/issues/new?title=Issue%20on%20page%20%2Fcontent/calibration/macro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/calibration/macro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calibration of Macroeconomic Parameters</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-assumptions">Economic Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-of-labor-augmenting-technological-change">Growth rate of labor-augmenting technological change</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-economy-parameters">Open Economy Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-holding-of-government-debt-in-the-initial-period">Foreign holding of government debt in the initial period</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-purchases-of-newly-issued-debt">Foreign purchases of newly issued debt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-holdings-of-excess-capital">Foreign holdings of excess capital</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-interest-rate">World interest rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remittances-as-a-share-of-gdp">Remittances as a share of GDP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#government-debt-spending-and-transfers">Government Debt, Spending and Transfers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#government-debt">Government Debt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-transfers-and-government-expenditures">Aggregate transfers and government expenditures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#government-interest-rate-wedge">Government interest rate wedge</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calibration-of-macroeconomic-parameters">
+<span id="chap-macrocalib"></span><h1>Calibration of Macroeconomic Parameters<a class="headerlink" href="#calibration-of-macroeconomic-parameters" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Not yet calibrated to Fiji.</strong> Every value in the packaged parameter file is
+still the Philippine value inherited when this repository was ported from
+<code class="docutils literal notranslate"><span class="pre">OG-PHL</span></code>. This chapter lists each parameter with the Fijian institution that
+owns the number, so it can be re-derived. See <code class="docutils literal notranslate"><span class="pre">CALIBRATION_STATUS.md</span></code> in the
+repository root for the full checklist.</p>
+</div>
+<section id="economic-assumptions">
+<h2>Economic Assumptions<a class="headerlink" href="#economic-assumptions" title="Link to this heading">#</a></h2>
+<section id="growth-rate-of-labor-augmenting-technological-change">
+<h3>Growth rate of labor-augmenting technological change<a class="headerlink" href="#growth-rate-of-labor-augmenting-technological-change" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(g_y\)</span> is the model’s long-run productivity growth rate. Derive it from average
+annual real GDP-per-capita growth over a deliberately chosen window, set as
+named constants in <code class="docutils literal notranslate"><span class="pre">ogfji/macro_params.py</span></code> with a written rationale: start the
+window after a structural break, end it before the latest shock, and reject
+unrepeatable booms.</p>
+<p>For Fiji the window choice is not routine. Growth is dominated by tourism and is
+highly volatile — the COVID collapse and the rebound that followed are both far
+outside any sustainable long-run rate, and tropical cyclones produce repeated
+sharp interruptions. A naive “all history” average, or a window that includes
+the rebound years, will misstate <span class="math notranslate nohighlight">\(g_y\)</span>.</p>
+<p>Critically, <span class="math notranslate nohighlight">\(g_y\)</span> must be <em>consistent with the growth the <code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code> anchor
+assumes</em>: in steady state GDP growth <span class="math notranslate nohighlight">\(\approx g_y + g_{n,ss}\)</span>. If the debt target
+reflects a stabilization plan built on a medium-term recovery, use that
+recovery’s productivity growth, not a stagnant realized window. Pairing a
+stagnant <span class="math notranslate nohighlight">\(g_y\)</span> with a stabilization debt target is internally inconsistent, and
+the model’s debt will not hold at the target.</p>
+<p><em>Sources to use:</em> Fiji Bureau of Statistics national accounts; IMF Article IV
+and World Economic Outlook for the medium-term path.</p>
+</section>
+</section>
+<section id="open-economy-parameters">
+<h2>Open Economy Parameters<a class="headerlink" href="#open-economy-parameters" title="Link to this heading">#</a></h2>
+<p>Fiji is a small, open, tourism- and remittance-dependent Pacific island economy.
+The open-economy block matters more here than for a large economy, and the
+inherited Philippine values should not be assumed transferable.</p>
+<section id="foreign-holding-of-government-debt-in-the-initial-period">
+<h3>Foreign holding of government debt in the initial period<a class="headerlink" href="#foreign-holding-of-government-debt-in-the-initial-period" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">initial_foreign_debt_ratio</span></code> — the initial-period share of government debt held
+by foreign investors. The subsequent path is endogenous.</p>
+<p><em>Sources to use:</em> Fiji Ministry of Finance debt reporting; the IMF Article IV
+debt-sustainability analysis (DSA).</p>
+</section>
+<section id="foreign-purchases-of-newly-issued-debt">
+<h3>Foreign purchases of newly issued debt<a class="headerlink" href="#foreign-purchases-of-newly-issued-debt" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\zeta_D\)</span> — the share of newly issued debt bought by foreigners. The standard
+default is to set it equal to <code class="docutils literal notranslate"><span class="pre">initial_foreign_debt_ratio</span></code>, assuming the foreign
+share of new issuance matches the foreign share of the stock. Use the DSA’s
+projected medium-term flow instead if the realized flow is a crisis-period
+outlier, such as a donor surge or a debt standstill.</p>
+</section>
+<section id="foreign-holdings-of-excess-capital">
+<h3>Foreign holdings of excess capital<a class="headerlink" href="#foreign-holdings-of-excess-capital" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\zeta_K\)</span> — the share of the gap between domestically-supplied capital and the
+capital demanded at the world interest rate that foreign investors fill. It is
+effectively the degree of capital-account openness, and it is harder to pin down
+than the debt parameters because purchases of “excess” capital demand are not
+directly measured.</p>
+<p>Anchor it to the normalized Chinn-Ito capital-account openness index for Fiji,
+then cross-check the <em>level</em> against an independent target: the foreign share of
+the capital stock in the Reserve Bank of Fiji’s International Investment
+Position, or the FDI stock relative to GDP.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not leave <span class="math notranslate nohighlight">\(\zeta_K\)</span> at a high placeholder such as 0.9. That value drives
+domestic capital <span class="math notranslate nohighlight">\(K_d = B - D_d\)</span> toward zero, the <span class="math notranslate nohighlight">\(K_d \geq 0\)</span> constraint binds
+along the transition, and the resource constraint fails to close. This is a
+recurring failure across the country models, not a hypothetical.</p>
+</div>
+</section>
+<section id="world-interest-rate">
+<h3>World interest rate<a class="headerlink" href="#world-interest-rate" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">world_int_rate_annual</span></code> prices foreign capital and foreign debt in the
+small-open-economy block. For an open, investment-grade sovereign, set it to a
+global risk-free rate plus the country’s sovereign spread. For a near-closed or
+distressed sovereign, leave it at the risk-free benchmark and route country risk
+through a low <span class="math notranslate nohighlight">\(\zeta_K\)</span> and the debt-elastic premium instead — adding a spread
+for a distressed sovereign is the wrong model. Decide which case Fiji is in and
+document the choice.</p>
+<p><em>Sources to use:</em> Reserve Bank of Fiji; IMF Article IV; sovereign rating
+reports.</p>
+</section>
+<section id="remittances-as-a-share-of-gdp">
+<h3>Remittances as a share of GDP<a class="headerlink" href="#remittances-as-a-share-of-gdp" title="Link to this heading">#</a></h3>
+<p>Remittance inflows are a large share of household income in Fiji, so leaving
+this block off would produce a spurious trade surplus and an implausible fiscal
+squeeze. <span class="math notranslate nohighlight">\(\alpha_{RM,1}\)</span> governs the model’s start period and <span class="math notranslate nohighlight">\(\alpha_{RM,T}\)</span>
+the long run; set <span class="math notranslate nohighlight">\(\alpha_{RM,1} = \alpha_{RM,T}\)</span> if no transition path is
+wanted. Set the companion <code class="docutils literal notranslate"><span class="pre">eta_RM</span></code> household-distribution matrix as well —
+remittances are not evenly distributed across lifetime-income groups. These are
+hand-set JSON values, never fetched from an API.</p>
+<p><em>Sources to use:</em> Reserve Bank of Fiji balance-of-payments statistics; World
+Bank remittance data as a cross-check.</p>
+</section>
+</section>
+<section id="government-debt-spending-and-transfers">
+<h2>Government Debt, Spending and Transfers<a class="headerlink" href="#government-debt-spending-and-transfers" title="Link to this heading">#</a></h2>
+<section id="government-debt">
+<h3>Government Debt<a class="headerlink" href="#government-debt" title="Link to this heading">#</a></h3>
+<p>The path of government debt is endogenous; the initial value is exogenous.
+Calibrate the initial debt-to-GDP <em>ratio</em> rather than a currency value, to avoid
+converting between model units and Fiji dollars.</p>
+<p>Two distinct parameters, often confused:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_debt_ratio</span></code> is <em>measured</em> — the actual current ratio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code> is a <em>policy anchor</em> — the government’s target or stance. It
+shapes the entire steady state and must not be left at an inherited value.</p></li>
+</ul>
+<p>Check whether any jump in the measured ratio is a valuation effect (an exchange
+rate movement revaluing external debt) rather than real deterioration.</p>
+<p><em>Sources to use:</em> Fiji Ministry of Finance debt bulletins and budget
+documentation; IMF Article IV / DSA.</p>
+</section>
+<section id="aggregate-transfers-and-government-expenditures">
+<h3>Aggregate transfers and government expenditures<a class="headerlink" href="#aggregate-transfers-and-government-expenditures" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\alpha_T\)</span> is non-pension transfers as a share of GDP (pensions are modeled
+separately). <span class="math notranslate nohighlight">\(\alpha_G\)</span> is government spending on goods and services as a share
+of GDP, defined as total outlays less transfers, net interest and pensions.
+<span class="math notranslate nohighlight">\(\alpha_I\)</span> is infrastructure spending as a share of GDP.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These are not free parameters. For debt to hold at <code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code> in the steady
+state, the government must run a primary balance
+<span class="math notranslate nohighlight">\(pb^* = \frac{r_{gov} - g}{1 + g} \times\)</span> <code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code>, where
+<span class="math notranslate nohighlight">\(g = g_y + g_n\)</span>. Primary spending must therefore equal revenue less <span class="math notranslate nohighlight">\(pb^*\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_G + \alpha_T \approx \sum(\text{tax revenue})/Y - pb^*\]</div>
+<p>OG-Core’s steady-state closure silently forces spending to the consistent level,
+so <strong>the steady state always solves and looks fine even when this identity is
+violated</strong>. The transition does not: it holds <span class="math notranslate nohighlight">\(\alpha_G + \alpha_T\)</span> at their
+input values for the first <span class="math notranslate nohighlight">\(t_{G1}\)</span> periods, so an over-set spending side makes
+debt balloon before the closure violently corrects it — and with a debt-elastic
+premium enabled, that overshoot feeds the premium and the transition runs away.
+Damping and better solvers do not fix this, because it is a fiscal
+inconsistency, not a convergence artifact.</p>
+</div>
+<p>Note also that over-collecting taxes <em>masks</em> this inconsistency: a placeholder
+tax rate set too high, or a stray nonzero tax the documentation claims is off,
+inflates revenue and accidentally balances an over-set spending side. Audit
+revenue by instrument against actual collections rather than checking only the
+total.</p>
+<p><em>Sources to use:</em> Fiji Ministry of Finance budget estimates and the annual
+Economic and Fiscal Update; IMF Article IV for the medium-term fiscal path.</p>
+</section>
+<section id="government-interest-rate-wedge">
+<h3>Government interest rate wedge<a class="headerlink" href="#government-interest-rate-wedge" title="Link to this heading">#</a></h3>
+<p>The rate the government pays, <span class="math notranslate nohighlight">\(r_{gov,t}\)</span>, differs from the household rate
+<span class="math notranslate nohighlight">\(r_t\)</span>. OG-Core captures the level wedge and a debt-elastic premium together:</p>
+<div class="math notranslate nohighlight">
+\[r_{gov,t} = \max\Big(r_{gov,scale} \cdot r_t - r_{gov,shift} + r_{gov,DY} \cdot \tfrac{D_t}{Y_t} + r_{gov,DY2} \cdot \big(\tfrac{D_t}{Y_t}\big)^2,\; 0\Big)\]</div>
+<p><strong>Level wedge.</strong> Keep the estimated sovereign-vs-corporate pass-through <em>slope</em>
+(<span class="math notranslate nohighlight">\(r_{gov,scale}\)</span>) from Li, Magud, Werner and Witte (2021), <a class="reference external" href="https://www.imf.org/en/Publications/WP/Issues/2021/06/04/The-Long-Run-Impact-of-Sovereign-Yields-on-Corporate-Yields-in-Emerging-Markets-50224">The Long-Run Impact
+of Sovereign Yields on Corporate Yields in Emerging
+Markets</a>
+(IMF WP/21/155), but <strong>re-anchor the shift</strong> so the steady-state <span class="math notranslate nohighlight">\(r_{gov}\)</span>
+equals Fiji’s actual real <em>effective</em> rate on debt — nominal debt service
+divided by gross debt, less expected inflation.</p>
+<p>The published intercept is a cross-country emerging-market average that maps a
+nominal USD bond-yield level onto the model’s real marginal product of capital.
+It can over-predict a small island economy’s real borrowing cost, which inflates
+the debt-stabilizing primary surplus and forces spending implausibly low. Note
+that <span class="math notranslate nohighlight">\(r_{gov}\)</span> multiplies the <em>whole</em> debt stock in
+<span class="math notranslate nohighlight">\(\text{debt service} = r_{gov} D\)</span>, so it is an average effective rate — do not
+use a marginal new-issue yield.</p>
+<p><strong>Debt-elastic premium.</strong> The <span class="math notranslate nohighlight">\(r_{gov,DY}\)</span> and <span class="math notranslate nohighlight">\(r_{gov,DY2}\)</span> terms let the
+sovereign rate rise with the debt ratio. Use the
+<a class="reference external" href="https://www.nber.org/system/files/working_papers/w9270/w9270.pdf">Schmitt-Grohé and Uribe (2003)</a>
+premium in convex form, <strong>centered on <code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code></strong> so it is exactly zero at
+the target and prices only transition overshoot:</p>
+<div class="math notranslate nohighlight">
+\[r_{gov,DY} = -2 \cdot r_{gov,DY2} \cdot \bar{D}, \qquad r_{gov,shift} = \text{base} - r_{gov,DY2} \cdot \bar{D}^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{D}\)</span> is <code class="docutils literal notranslate"><span class="pre">debt_ratio_ss</span></code>. A premium that bites <em>at</em> the target instead
+compounds any overshoot into a runaway debt-service feedback. If a live-refresh
+path ever returns the raw un-recentered shift, it silently de-centers the
+premium and moves the steady state — keep the value frozen in the JSON.</p>
+<p><em>Sources to use:</em> Fiji Ministry of Finance debt service and gross debt (for the
+effective rate); Reserve Bank of Fiji for inflation expectations.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/calibration"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="firms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calibration of Firms Parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="demographics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Demographics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-assumptions">Economic Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-of-labor-augmenting-technological-change">Growth rate of labor-augmenting technological change</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-economy-parameters">Open Economy Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-holding-of-government-debt-in-the-initial-period">Foreign holding of government debt in the initial period</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-purchases-of-newly-issued-debt">Foreign purchases of newly issued debt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-holdings-of-excess-capital">Foreign holdings of excess capital</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-interest-rate">World interest rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remittances-as-a-share-of-gdp">Remittances as a share of GDP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#government-debt-spending-and-transfers">Government Debt, Spending and Transfers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#government-debt">Government Debt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-transfers-and-government-expenditures">Aggregate transfers and government expenditures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#government-interest-rate-wedge">Government interest rate wedge</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcelo LaFleur, Richard W. Evans, and Jason DeBacker
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
