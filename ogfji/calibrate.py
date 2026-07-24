@@ -1,90 +1,46 @@
-from ogfji import macro_params, income
-from ogfji import input_output as io
-import os
-import warnings
-import numpy as np
-import datetime
+"""Live demographic refresh for the OG-FJI single-industry calibration."""
 
-# UN M49 numeric code for Fiji, used for all UN World Population Prospects
-# calls. Referenced from both call sites below and from
-# ogfji.update_baseline_demographics -- never inline the literal (a stale
-# hardcoded code is the most common regression when porting a country repo).
+import warnings
+
+import numpy as np
+
+from . import income
+
 UN_COUNTRY_CODE = "242"
 
 
 class Calibration:
-    """OG-FJI calibration class"""
+    """Return an optional live overlay for the packaged OG-FJI defaults.
+
+    The packaged JSON is the source of truth. With ``update_from_api=False``
+    this class performs no external calls and returns only the single-industry
+    identity matrices. A live update refreshes UN demographics and the
+    demographics-dependent earnings matrix; documented macro and fiscal
+    parameters are never overwritten.
+    """
 
     def __init__(
         self,
         p,
-        macro_data_start_year=datetime.datetime(1947, 1, 1),
-        macro_data_end_year=datetime.datetime(2023, 1, 1),
         demographic_data_path=None,
         output_path=None,
         update_from_api=False,
     ):
-        """
-        Constructor for the Calibration class.
+        del output_path  # retained for compatibility with sibling models
 
-        Args:
-            p (OG-Core Specifications object): model parameters
-            macro_data_start_year (datetime): start date for macro data
-            macro_data_end_year (datetime): end date for macro data
-            demographic_data_path (str): path to save demographic data
-            output_path (str): path to save output to
-            update_from_api (bool): Set True to pull updated data from
-                online sources
+        if p.I != 1 or p.M != 1:
+            raise ValueError(
+                "OG-FJI 0.1 is a single-industry calibration (I=M=1)."
+            )
 
-        Returns:
-            None
-
-        """
-        # Create output_path if it doesn't exist
-        if output_path is not None:
-            if not os.path.exists(output_path):
-                os.makedirs(output_path)
-
-        # Initialize with overlay values only. Existing values on p are the
-        # baseline from the packaged defaults.
-        self.macro_params = {}
         self.demographic_params = {}
         self.e = None
-        self.alpha_c = np.array([1.0]) if p.I == 1 else None
-        self.io_matrix = np.array([[1.0]]) if p.M == 1 else None
+        self.alpha_c = np.array([1.0])
+        self.io_matrix = np.array([[1.0]])
 
         if not update_from_api:
             return
 
-        # Macro estimation
-        try:
-            self.macro_params = macro_params.get_macro_params(
-                macro_data_start_year,
-                macro_data_end_year,
-                update_from_api=update_from_api,
-            )
-        except Exception as exc:
-            warnings.warn(f"Macro params update failed: {exc}", stacklevel=2)
-
-        # io matrix and alpha_c
-        if p.I > 1:
-            try:
-                alpha_c_dict = io.get_alpha_c()
-                # check that model dimensions are consistent with alpha_c
-                assert p.I == len(list(alpha_c_dict.keys()))
-                self.alpha_c = np.array(list(alpha_c_dict.values()))
-            except Exception as exc:
-                warnings.warn(f"alpha_c update failed: {exc}", stacklevel=2)
-        if p.M > 1:
-            try:
-                io_df = io.get_io_matrix()
-                # check that model dimensions are consistent with io_matrix
-                assert p.M == len(list(io_df.keys()))
-                self.io_matrix = io_df.values
-            except Exception as exc:
-                warnings.warn(f"io_matrix update failed: {exc}", stacklevel=2)
-
-        # Demographics and income are atomic because e depends on demography.
         try:
             from ogcore import demographics
 
@@ -100,8 +56,6 @@ class Calibration:
                 GraphDiag=False,
                 download_path=demographic_data_path,
             )
-
-            # demographics for 80 period lives (needed for getting e below)
             demog80 = demographics.get_pop_objs(
                 20,
                 80,
@@ -113,8 +67,6 @@ class Calibration:
                 final_data_year=p.start_year + 1,
                 GraphDiag=False,
             )
-
-            # earnings profiles
             self.e = income.get_e_interp(
                 p.E,
                 p.S,
@@ -129,16 +81,11 @@ class Calibration:
             self.demographic_params = {}
             self.e = None
 
-    # method to return all newly calibrated parameters in a dictionary
     def get_dict(self):
-        d = {}
-        d.update(self.macro_params)
-        d.update(self.demographic_params)
+        """Return parameters that should overlay the packaged defaults."""
+        result = dict(self.demographic_params)
         if self.e is not None:
-            d["e"] = self.e
-        if self.alpha_c is not None:
-            d["alpha_c"] = self.alpha_c
-        if self.io_matrix is not None:
-            d["io_matrix"] = self.io_matrix
-
-        return d
+            result["e"] = self.e
+        result["alpha_c"] = self.alpha_c
+        result["io_matrix"] = self.io_matrix
+        return result

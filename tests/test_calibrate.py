@@ -1,17 +1,15 @@
-"""
-Tests of calibrate.py module offline and partial-failure behavior.
-"""
+"""Tests for the offline and live OG-FJI calibration overlay."""
 
 import warnings
 from unittest.mock import MagicMock, patch
 
 import numpy as np
+import pytest
 
-from ogfji.calibrate import Calibration
+from ogfji.calibrate import Calibration, UN_COUNTRY_CODE
 
 
-def _make_mock_p(I=1, M=1):  # noqa: E741
-    """Create a minimal mock Specifications object."""
+def _mock_specs(I=1, M=1):  # noqa: E741
     p = MagicMock()
     p.I = I
     p.M = M
@@ -19,112 +17,51 @@ def _make_mock_p(I=1, M=1):  # noqa: E741
     p.S = 80
     p.T = 160
     p.J = 7
-    p.start_year = 2025
-    p.lambdas = np.array([0.25, 0.25, 0.0625, 0.0625, 0.0625, 0.0625, 0.25])
+    p.start_year = 2026
+    p.lambdas = np.array([0.25, 0.25, 0.20, 0.10, 0.10, 0.09, 0.01])
     return p
 
 
-class TestOfflineMode:
-    """Tests for update_from_api=False."""
-
-    def test_single_sector_returns_identity_values(self):
-        p = _make_mock_p(I=1, M=1)
-        c = Calibration(p, update_from_api=False)
-
-        d = c.get_dict()
-        np.testing.assert_array_equal(d["alpha_c"], np.array([1.0]))
-        np.testing.assert_array_equal(d["io_matrix"], np.array([[1.0]]))
-
-    def test_single_sector_no_demographics_or_macro(self):
-        p = _make_mock_p(I=1, M=1)
-        c = Calibration(p, update_from_api=False)
-
-        d = c.get_dict()
-        assert "e" not in d
-        assert "omega" not in d
-        assert "omega_SS" not in d
-        assert "g_y_annual" not in d
-        assert "initial_debt_ratio" not in d
-
-    def test_multi_sector_omits_alpha_c_and_io_matrix(self):
-        p = _make_mock_p(I=5, M=4)
-        c = Calibration(p, update_from_api=False)
-
-        assert c.get_dict() == {}
-        assert c.alpha_c is None
-        assert c.io_matrix is None
-
-    @patch("ogfji.calibrate.macro_params")
-    @patch("ogfji.calibrate.io")
-    def test_no_external_calls(self, mock_io, mock_macro):
-        p = _make_mock_p(I=5, M=4)
-        Calibration(p, update_from_api=False)
-
-        mock_macro.get_macro_params.assert_not_called()
-        mock_io.get_alpha_c.assert_not_called()
-        mock_io.get_io_matrix.assert_not_called()
+def test_fiji_un_country_code():
+    assert UN_COUNTRY_CODE == "242"
 
 
-class TestOnlinePartialFailure:
-    """Tests for update_from_api=True with mocked partial failures."""
+def test_offline_mode_returns_only_identity_values():
+    result = Calibration(_mock_specs(), update_from_api=False).get_dict()
+    np.testing.assert_array_equal(result["alpha_c"], np.array([1.0]))
+    np.testing.assert_array_equal(result["io_matrix"], np.array([[1.0]]))
+    assert "e" not in result
+    assert "omega" not in result
 
-    @patch("ogfji.calibrate.macro_params")
-    def test_macro_failure_warns_and_omits(self, mock_macro):
-        mock_macro.get_macro_params.side_effect = RuntimeError("API down")
 
-        p = _make_mock_p(I=1, M=1)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            with patch("ogcore.demographics.get_pop_objs") as mock_demog:
-                mock_demog.side_effect = RuntimeError("skip")
-                c = Calibration(p, update_from_api=True)
+def test_multi_industry_is_explicitly_rejected():
+    with pytest.raises(ValueError, match="single-industry"):
+        Calibration(_mock_specs(I=2, M=2))
 
-        macro_warnings = [x for x in w if "Macro params" in str(x.message)]
-        assert len(macro_warnings) == 1
 
-        d = c.get_dict()
-        assert "g_y_annual" not in d
-        assert "initial_debt_ratio" not in d
+@patch("ogcore.demographics.get_pop_objs")
+@patch("ogfji.calibrate.income.get_e_interp")
+def test_live_mode_uses_fiji_for_both_demographic_calls(mock_e, mock_pop):
+    mock_pop.side_effect = [
+        {"omega": np.ones((2, 80)), "omega_SS": np.ones(80) / 80},
+        {"omega_SS": np.ones(80) / 80},
+    ]
+    mock_e.return_value = np.ones((80, 7))
 
-    @patch("ogfji.calibrate.io")
-    @patch("ogfji.calibrate.macro_params")
-    def test_sam_failure_warns_and_omits(self, mock_macro, mock_io):
-        mock_macro.get_macro_params.return_value = {"g_y_annual": 0.01}
-        mock_io.get_alpha_c.side_effect = RuntimeError("SAM unavailable")
-        mock_io.get_io_matrix.side_effect = RuntimeError("SAM unavailable")
+    result = Calibration(_mock_specs(), update_from_api=True).get_dict()
 
-        p = _make_mock_p(I=5, M=4)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            with patch("ogcore.demographics.get_pop_objs") as mock_demog:
-                mock_demog.side_effect = RuntimeError("skip")
-                c = Calibration(p, update_from_api=True)
+    assert mock_pop.call_count == 2
+    for call in mock_pop.call_args_list:
+        assert call.kwargs["country_id"] == "242"
+    assert result["e"].shape == (80, 7)
 
-        assert len([x for x in w if "alpha_c" in str(x.message)]) == 1
-        assert len([x for x in w if "io_matrix" in str(x.message)]) == 1
 
-        d = c.get_dict()
-        assert "alpha_c" not in d
-        assert "io_matrix" not in d
-        assert d["g_y_annual"] == 0.01
-
-    @patch("ogfji.calibrate.macro_params")
-    def test_demographics_failure_warns_and_omits(self, mock_macro):
-        mock_macro.get_macro_params.return_value = {"g_y_annual": 0.01}
-
-        p = _make_mock_p(I=1, M=1)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            with patch("ogcore.demographics.get_pop_objs") as mock_demog:
-                mock_demog.side_effect = RuntimeError("UN API down")
-                c = Calibration(p, update_from_api=True)
-
-        assert len([x for x in w if "Demographics" in str(x.message)]) == 1
-
-        d = c.get_dict()
-        assert "e" not in d
-        assert "omega" not in d
-        assert "omega_SS" not in d
-        assert d["g_y_annual"] == 0.01
-        assert "alpha_c" in d
-        assert "io_matrix" in d
+@patch("ogcore.demographics.get_pop_objs")
+def test_live_failure_keeps_packaged_values(mock_pop):
+    mock_pop.side_effect = RuntimeError("offline")
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        result = Calibration(_mock_specs(), update_from_api=True).get_dict()
+    assert any("Demographics/income" in str(item.message) for item in caught)
+    assert "omega" not in result
+    assert "e" not in result

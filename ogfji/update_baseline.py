@@ -7,12 +7,10 @@ overlay back into ``ogfji_default_parameters.json`` so an offline run
 is the live data OG-FJI sources from APIs:
 
   * demographics from the UN (with the ogcore 0.16.3 preTP seeds),
-  * the earnings profile ``e`` (derived from those demographics),
-  * ``g_y_annual`` from the World Bank (pre-pandemic per-capita growth).
+  * the earnings profile ``e`` (derived from those demographics).
 
-Documented, non-API macro parameters (``alpha_T``, ``alpha_G``, the
-open-economy block, ``gamma``, ``r_gov_*`` ...) are held in the JSON and left
-unchanged; see ``ogfji.macro_params`` and the calibration docs.
+Documented macro, fiscal, production, preference, and tax parameters are held
+in the JSON and left unchanged. They are not refreshed from live APIs.
 
 Usage::
 
