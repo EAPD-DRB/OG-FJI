@@ -41,6 +41,11 @@ jobs:
         run: uv sync --extra dev
       - name: Test
         run: uv run python -m pytest -m "not local" --cov=./ --cov-report=xml
+      # Coverage upload is advisory until this repo has a CODECOV_TOKEN secret.
+      # Without one, Codecov rejects the upload ("Token required because branch
+      # is protected") and a true `fail_ci_if_error` turns an otherwise passing
+      # build red. Add the secret in repository settings, then set
+      # `fail_ci_if_error: true` to match the sibling country repos.
       - name: Upload coverage to Codecov
         if: matrix.os == 'ubuntu-latest' && contains(github.repository, 'EAPD-DRB/OG-FJI') && github.actor != 'dependabot[bot]'
         uses: codecov/codecov-action@v7
@@ -49,7 +54,7 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
+          fail_ci_if_error: false
           verbose: true
   pip-import-smoke:
     runs-on: ubuntu-latest
